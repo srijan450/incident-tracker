@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+  mongodb:
+    image: mongo:7
+    container_name: incident-mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  backend:
+    build: ./server
+    container_name: incident-backend
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGO_DB_URL=mongodb://admin:password@mongodb:27017/incidentdb?authSource=admin
+      - PORT=8000
+    depends_on:
+      - mongodb
+
+  frontend:
+    build: ./client
+    container_name: incident-frontend
+    restart: always
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  mongo-data:
