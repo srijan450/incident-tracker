@@ -149,23 +149,7 @@ Predictable error handling - Clean response structure
 
 ---
 
-## 5. MVC Architecture
-
-    server/src/
-    ├── controllers/
-    ├── models/
-    ├── routes/
-    ├── middlewares/
-    ├── utils/
-    ├── config/
-    └── app.ts
-
-Benefits: - Separation of concerns - High maintainability - Scalable
-structure - Easy to convert into microservices
-
----
-
-## 6. MongoDB Optimized Query Handling
+## 5. MongoDB Optimized Query Handling
 
 - Server-side filtering
 - Server-side pagination
@@ -174,7 +158,7 @@ structure - Easy to convert into microservices
 
 ---
 
-## 7. Dockerized Deployment
+## 6. Dockerized Deployment
 
 - Separate Dockerfiles for client & server
 - docker-compose for full stack setup
